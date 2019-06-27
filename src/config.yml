@@ -1,0 +1,10 @@
+Group:
+  1111:
+    Number: 12
+    Cmd: give {Player} 7
+  haha:
+    Number: 7
+    Cmd: give {Player} 11 4
+  xixi:
+    Number: 6
+    Cmd: give {Player} 55 6

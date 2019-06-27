@@ -1,0 +1,5 @@
+name: ChronicleCommands
+main: com.github.mc.main
+version: 1.0
+commands:
+  JL:

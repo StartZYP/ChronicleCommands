@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="ChronicleCommands:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ChronicleCommands_jar</output-path>
+    <root id="root">
+      <element id="archive" name="ChronicleCommands.jar">
+        <element id="module-output" name="ChronicleCommands" />
+      </element>
+    </root>
+  </artifact>
+</component>
