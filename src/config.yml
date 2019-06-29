@@ -2,9 +2,12 @@ Group:
   1111:
     Number: 12
     Cmd: give {Player} 7
+    Msg: §6玩家：§3{Player}  §6世界树组§e进度 [{Count}/12]
   haha:
     Number: 7
     Cmd: give {Player} 11 4
+    Msg: §6玩家：§3{Player}  §6跑酷组§e进度 [{Count}/7]
   xixi:
     Number: 6
     Cmd: give {Player} 55 6
+    Msg: §6玩家：§3{Player}  §6搞基组§e进度 [{Count}/6]

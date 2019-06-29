@@ -47,12 +47,18 @@ public class main extends JavaPlugin {
                     }
                     //查询一个组
                 }
-            }else if (args.length==3&&args[0].equalsIgnoreCase("add")){
-                if (!Bukkit.getPlayer(args[1]).isOnline()){
-                    sender.sendMessage("玩家不在线");
+            }else if (args.length==3){
+                if (!Bukkit.getOfflinePlayer(args[1]).isOnline()){
+                    sender.sendMessage("§e§l玩家不在线");
                     return super.onCommand(sender, command, label, args);
                 }
-                if (GroupInfo.containsKey(args[2])){
+
+                if (!GroupInfo.containsKey(args[2])){
+                    sender.sendMessage("§e§l抱歉,配置项没有这个分组");
+                    return super.onCommand(sender, command, label, args);
+                }
+
+                if (args[0].equalsIgnoreCase("add")){
                     int Count = GetPlayerCount(args[2], args[1]);
                     if (Count==-1){
                         DaoTool.AddData(args[2],args[1],"1");
@@ -69,10 +75,16 @@ public class main extends JavaPlugin {
                             DaoTool.Updata(args[2],args[1],String.valueOf(Count));
                             //未达到继续增加1
                         }
-
                     }
-                }else {
-                    sender.sendMessage("§e§l抱歉,配置项没有这个分组");
+                }else if (args[0].equalsIgnoreCase("info")){
+                    int Count = GetPlayerCount(args[2], args[1]);
+                    if (Count==-1){
+                        DaoTool.AddData(args[2],args[1],"1");
+                        //首次添加
+                        sender.sendMessage(GroupInfo.get(args[2])[2].replace("{Player}",args[1]).replace("{Count}","0"));
+                    }else {
+                        sender.sendMessage(GroupInfo.get(args[2])[2].replace("{Player}",args[1]).replace("{Count}",String.valueOf(Count)));
+                    }
                 }
             }
         }
@@ -93,7 +105,8 @@ public class main extends JavaPlugin {
         for (String temp:mines){
             String Number = getConfig().getString("Group."+temp+".Number");
             String Cmd = getConfig().getString("Group."+temp+".Cmd");
-            GroupInfo.put(temp,new String[]{Number,Cmd});
+            String Msg = getConfig().getString("Group."+temp+".Msg");
+            GroupInfo.put(temp,new String[]{Number,Cmd,Msg});
         }
     }
 
