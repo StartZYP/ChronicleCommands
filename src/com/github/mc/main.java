@@ -79,7 +79,7 @@ public class main extends JavaPlugin {
                 }else if (args[0].equalsIgnoreCase("info")){
                     int Count = GetPlayerCount(args[2], args[1]);
                     if (Count==-1){
-                        DaoTool.AddData(args[2],args[1],"1");
+                        DaoTool.AddData(args[2],args[1],"0");
                         //首次添加
                         sender.sendMessage(GroupInfo.get(args[2])[2].replace("{Player}",args[1]).replace("{Count}","0"));
                     }else {
